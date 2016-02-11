@@ -1,6 +1,6 @@
 #include "Graph.h"
 #include "Stack.h"
-
+#include "Queue.h"
 
 void addEdge(int v,int w,Graph *g)
 {
@@ -69,6 +69,51 @@ void DFS(Graph *g){
         }
     }
 
-    printf("\nTotal Connected Components:%d\n",counter);
+    printf("\nTotal Connected Components using DFS:%d\n",counter);
+
+}
+
+
+void BFSUtil(Graph *g,int src,int *arr){
+    Queue q={{0},-1,-1};
+    int i=0;
+
+    if(src>g->v){
+        printf("src vertex is greater than max vertices");
+        return;
+    }
+    enQueue(src,&q);
+    arr[src]=1;
+    printf("BFS: ");
+    while(!isEmptyQ(&q)){
+        int temp=deQueue(&q);
+        printf(" %d",temp);
+        for(i=0;i<g->v;i++){
+            if(g->adj[temp][i]!=0 && arr[i]==0){
+               // printf(" %d ",i);
+                enQueue(i,&q);
+                arr[i]=1;
+            }
+        }
+    }
+    printf("\n");
+}
+
+
+
+void BFS(Graph *g){
+ int visited[MAX_VERTICES];
+    int i=0;
+    int counter=0;
+    for(i=0;i<MAX_VERTICES;i++){
+        visited[i]=0;
+    }
+    for(i=0;i<g->v;i++){
+        if(visited[i]==0){
+            BFSUtil(g,i,visited);
+            counter++;
+        }
+    }
+    printf("\nTotal Connected Components using BFS:%d\n",counter);
 
 }

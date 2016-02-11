@@ -14,3 +14,5 @@ void addEdge(int v,int w,Graph *g);
 void DFSUtil(Graph *g,int src,int *arr);
 void printAdjMatrix(Graph *g);
 void DFS(Graph *g);
+void BFSUtil(Graph *g,int src,int *arr);
+void BFS(Graph *g);

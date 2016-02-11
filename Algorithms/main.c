@@ -4,6 +4,9 @@
 #include "BubbleSort.h"
 #include "Utility.h"
 #include "LinkedList.h"
+#include "Stack.h"
+#include "Graph.h"
+#include "Queue.h"
 
 int main()
 {
@@ -20,6 +23,23 @@ int main()
     AddNode(&p,90);
     printList(p);
     reverseList(&p);
+	
     printList(p);
+	  Graph *g=NULL;
+    g=(Graph*)calloc(1,sizeof(Graph));
+    g->v=6;
+    addEdge(0, 1,g);
+    addEdge(0, 2,g);
+    addEdge(1, 2,g);
+    addEdge(2, 0,g);
+    addEdge(2, 3,g);
+    addEdge(4, 5,g);
+    addEdge(5,5,g);
+    printAdjMatrix(g);
+    printf("\n");
+    DFS(g);
+    BFS(g);
+
+	
     return 0;
 }
