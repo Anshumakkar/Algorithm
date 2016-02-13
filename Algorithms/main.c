@@ -39,7 +39,31 @@ int main()
     printf("\n");
     DFS(g);
     BFS(g);
+    Graph *gC=NULL;
+    gC=(Graph*)calloc(1,sizeof(Graph));
+    gC->v=5;
+    addEdge(0, 1,gC);
+    addEdge(0, 2,gC);
+    addEdge(1, 2,gC);
+    addEdge(0, 3,gC);
+    addEdge(3, 4,gC);
+ 	printAdjMatrix(gC);
+    printf("\n");
+    isUndirectedGraphCyclic(gC);
 
-	
+
+	 Graph *gDC=NULL;
+    gDC=(Graph*)calloc(1,sizeof(Graph));
+    gDC->v=4;
+    addDirectedEdge(0, 1,gDC);
+    addDirectedEdge(0, 2,gDC);
+    addDirectedEdge(1, 2,gDC);
+    addDirectedEdge(2, 0,gDC);
+    addDirectedEdge(2, 3,gDC);
+    addDirectedEdge(3, 3,gDC);
+	printAdjMatrix(gDC);
+	isDirectedGraphCyclic(gDC);
+
+
     return 0;
 }

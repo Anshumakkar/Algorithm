@@ -1,6 +1,6 @@
 #include "stdlib.h"
 #include "stdio.h"
-
+#include "stdbool.h"
 #define MAX_VERTICES 20
 #define INVALID_INDEX -1
 
