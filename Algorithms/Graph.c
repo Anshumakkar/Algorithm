@@ -224,3 +224,50 @@ bool isDirectedGraphCyclic(Graph *g){
     printf("Cycle does not exists\n");
     return false;
 }
+
+
+void topologicalSortUtil(Graph* g,int src,int* visited,Stack *S){
+
+     int i=0;
+    visited[src]=1;
+      for(i=0;i<g->v;i++){
+        if(g->adj[src][i]!=0 && visited[i]==0){
+            topologicalSortUtil(g,i,visited,S);
+        }
+    }
+     //printf("push %d ", src);
+    push(src,S);
+    //printf(" %d\n",S->counter);
+}
+
+
+
+void topologicalSort(Graph *g){
+
+Stack *S=NULL;
+S=(Stack *)calloc(1,sizeof(Stack));
+S->counter=INVALID_INDEX;
+int *visited=NULL;
+int i=0;
+visited=(int*)calloc(g->v,sizeof(int));
+
+for(i=0;i<g->v;i++){
+    if(visited[i]==0){
+        topologicalSortUtil(g,i,visited,S);
+    }
+}
+printf("\n********************\nTopological Sort : ");
+while(!isEmpty(S)){
+    int ret= pop(S);
+    printf(" %d", ret);
+
+}
+
+
+printf("\n********************\n");
+
+
+}
+
+
+

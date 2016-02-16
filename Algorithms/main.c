@@ -64,6 +64,17 @@ int main()
 	printAdjMatrix(gDC);
 	isDirectedGraphCyclic(gDC);
 
+/** Topological Sort*/
 
+    Graph *gTSort=NULL;
+    gTSort=(Graph*)calloc(1,sizeof(Graph));
+    gTSort->v=6;
+     addDirectedEdge(5, 2,gTSort);
+    addDirectedEdge(5, 0,gTSort);
+    addDirectedEdge(4, 0,gTSort);
+    addDirectedEdge(2, 3,gTSort);
+    addDirectedEdge(3, 1,gTSort);
+    addDirectedEdge(4, 1,gTSort);
+    topologicalSort(gTSort);
     return 0;
 }
